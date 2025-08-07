@@ -7,7 +7,7 @@ const userRouter = require('./routes/user')
 const { validateEmailAndPassword, checkValidRequest } = require('./middleware/user')
 const connectDB = require('./connect')
 
-connectDB('mongodb://127.0.0.1:27017/promptforge')
+connectDB(process.env.MONGODB_CONNECTION_STRING)
 
 
 app.use(express.urlencoded({ extended: true }));
