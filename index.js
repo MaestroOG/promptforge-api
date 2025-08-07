@@ -4,7 +4,7 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 const promptRouter = require('./routes/prompts')
 const userRouter = require('./routes/user')
-const { validateEmailAndPassword } = require('./middleware/user')
+const { validateEmailAndPassword, checkValidRequest } = require('./middleware/user')
 const connectDB = require('./connect')
 
 connectDB('mongodb://127.0.0.1:27017/promptforge')
@@ -15,7 +15,7 @@ app.use(express.json());
 
 
 app.use('/api/user', validateEmailAndPassword, userRouter)
-app.use('/api/prompts', promptRouter);
+app.use('/api/prompts', checkValidRequest, promptRouter);
 
 
 

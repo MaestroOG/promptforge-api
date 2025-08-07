@@ -1,6 +1,6 @@
 const User = require('../models/user')
 const bcrypt = require('bcrypt');
-const { generateApiKey } = require('../helpers/user')
+const { generateApiKey } = require('../utils/user')
 const saltRounds = 10;
 
 
@@ -26,7 +26,6 @@ const registerUser = (req, res) => {
             apiKey: user.apiKey
         })
     });
-
 }
 
 
