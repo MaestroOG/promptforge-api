@@ -13,6 +13,9 @@ connectDB(process.env.MONGODB_CONNECTION_STRING)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+app.get('/', (req, res) => {
+    res.send('Please use the API routes')
+})
 
 app.use('/api/user', validateEmailAndPassword, userRouter)
 app.use('/api/prompts', checkValidRequest, promptRouter);
